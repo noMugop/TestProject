@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.example.testproject.data.database.json.model.GameInfoDbModel
 import com.example.testproject.data.database.json.model.converter.Converters
 
-@Database(entities = [GameInfoDbModel::class], version = 2, exportSchema = false)
+@Database(entities = [GameInfoDbModel::class], version = 3, exportSchema = false)
 abstract class GameInfoDatabase : RoomDatabase() {
 
     companion object {
@@ -27,7 +27,9 @@ abstract class GameInfoDatabase : RoomDatabase() {
                     application,
                     GameInfoDatabase::class.java,
                     DB_NAME
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 db = instance
                 return instance
             }

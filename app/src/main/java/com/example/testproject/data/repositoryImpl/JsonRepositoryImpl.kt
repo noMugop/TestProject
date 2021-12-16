@@ -21,8 +21,13 @@ class JsonRepositoryImpl(application: Application) : JsonRepository {
     private val db = GameInfoDatabase.getInstance(application).gameInfoDao()
     private val mapper = GameInfoMapper()
 
-    override fun getGameInfo(id: Int): LiveData<GameInfo> {
-        TODO()
+    override fun getGameInfo(id: Int): GameInfo {
+        var game: GameInfo? = null
+        scope.launch {
+            val gameDbModel = db.getGameInfo(id)
+            game = mapper.mapDbModelToGameInfo(gameDbModel)
+        }
+            return game as GameInfo
     }
 
     override fun getGameInfoList(): LiveData<List<GameInfo>> {

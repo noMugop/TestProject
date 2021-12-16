@@ -1,8 +1,8 @@
 package com.example.testproject.presentation.adapter.json
 
-import android.app.Application
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.example.testproject.databinding.ItemGameInfoBinding
 import com.example.testproject.domain.repository.json.pojo.GameInfo
@@ -12,6 +12,7 @@ class GameInfoAdapter(private val context: Context) :
     androidx.recyclerview.widget.ListAdapter<GameInfo, GameInfoViewHolder>(GameInfoDiffCallback) {
 
     var onGameClickListener: OnGameClickListener? = null
+    var onNameLongClickListener: OnNameLongClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameInfoViewHolder {
         return GameInfoViewHolder(ItemGameInfoBinding.inflate(
@@ -21,19 +22,25 @@ class GameInfoAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: GameInfoViewHolder, position: Int) {
         val game = getItem(position)
         with(holder.binding) {
-            with(game) {
-                tvGameName.text = name
-                if (shortScreenshot != null) {
-                    Picasso.get().load(shortScreenshot[0].image).into(ivGameImage)
+                tvGameName.text = game.name
+                if (game.shortScreenshot != null) {
+                    Picasso.get().load(game.shortScreenshot[0].image).into(ivGameImage)
                 }
                 root.setOnClickListener {
-                    onGameClickListener?.onGameClick(this)
+                    onGameClickListener?.onGameClick(game)
                 }
-            }
+                tvGameName.setOnLongClickListener {
+                    onNameLongClickListener?.onNameLongClick()
+                    true
+                }
         }
     }
 
     interface OnGameClickListener {
         fun onGameClick(gameInfo: GameInfo)
+    }
+
+    interface OnNameLongClickListener {
+        fun onNameLongClick()
     }
 }

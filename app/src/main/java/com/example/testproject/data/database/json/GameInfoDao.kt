@@ -11,8 +11,8 @@ interface GameInfoDao {
     @Query("SELECT * FROM game_info")
     fun getGameInfoList(): LiveData<List<GameInfoDbModel>>
 
-//    @Query("SELECT * FROM game_info WHERE name = name")
-//    fun getGameInfo(name: String): LiveData<GameInfoDbModel>
+    @Query("SELECT * FROM game_info WHERE id == :id")
+    suspend fun getGameInfo(id: Int): GameInfoDbModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun loadData(list: List<GameInfoDbModel>)

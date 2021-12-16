@@ -5,7 +5,7 @@ import com.example.testproject.domain.repository.json.pojo.GameInfo
 
 interface JsonRepository {
 
-    fun getGameInfo(id: Int): LiveData<GameInfo>
+    fun getGameInfo(id: Int): GameInfo
 
     fun getGameInfoList(): LiveData<List<GameInfo>>
 

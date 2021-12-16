@@ -7,10 +7,12 @@ import com.example.testproject.domain.repository.json.pojo.GameInfo
 class GameInfoMapper {
 
     fun mapDtoToDbModel(gameInfoDtoList: GameInfoDto) = GameInfoDbModel(
+        id = gameInfoDtoList.id,
         name = gameInfoDtoList.name,
         shortScreenshot = gameInfoDtoList.shortScreenshot)
 
     fun mapDbModelToGameInfo(gameInfoDbModel: GameInfoDbModel) = GameInfo(
+        id = gameInfoDbModel.id,
         name = gameInfoDbModel.name,
         shortScreenshot = gameInfoDbModel.shortScreenshot)
 
