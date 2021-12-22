@@ -51,7 +51,7 @@ class JsonFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = GameInfoAdapter(context as Context)
+        val adapter = GameInfoAdapter(requireContext())
         adapter.onGameClickListener = object : GameInfoAdapter.OnGameClickListener {
             override fun onGameClick(gameInfo: GameInfo) {
                 Toast.makeText(context, gameInfo.name, Toast.LENGTH_SHORT).show()
