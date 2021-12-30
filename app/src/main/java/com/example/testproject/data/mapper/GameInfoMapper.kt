@@ -3,8 +3,9 @@ package com.example.testproject.data.mapper
 import com.example.testproject.data.database.json.model.GameInfoDbModel
 import com.example.testproject.data.network.json.model.GameInfoDto
 import com.example.testproject.domain.repository.json.pojo.GameInfo
+import javax.inject.Inject
 
-class GameInfoMapper {
+class GameInfoMapper @Inject constructor(){
 
     fun mapDtoToDbModel(gameInfoDtoList: GameInfoDto) = GameInfoDbModel(
         id = gameInfoDtoList.id,

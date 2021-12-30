@@ -1,8 +1,9 @@
 package com.example.testproject.domain.repository.json.useCase
 
 import com.example.testproject.domain.repository.json.JsonRepository
+import javax.inject.Inject
 
-class LoadDataUseCase(private val repositoryImpl: JsonRepository) {
+class LoadDataUseCase @Inject constructor(private val repository: JsonRepository) {
 
-    operator fun invoke() = repositoryImpl.loadData()
+    operator fun invoke() = repository.loadData()
 }

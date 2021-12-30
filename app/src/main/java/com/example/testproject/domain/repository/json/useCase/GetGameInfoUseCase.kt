@@ -1,8 +1,9 @@
 package com.example.testproject.domain.repository.json.useCase
 
 import com.example.testproject.domain.repository.json.JsonRepository
+import javax.inject.Inject
 
-class GetGameInfoUseCase(private val repositoryImpl: JsonRepository) {
+class GetGameInfoUseCase @Inject constructor(private val repository: JsonRepository) {
 
-    operator fun invoke(id: Int) = repositoryImpl.getGameInfo(id)
+    operator fun invoke(id: Int) = repository.getGameInfo(id)
 }

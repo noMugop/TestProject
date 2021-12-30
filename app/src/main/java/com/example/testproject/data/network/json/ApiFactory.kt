@@ -2,15 +2,36 @@ package com.example.testproject.data.network.json
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-object ApiFactory {
+class ApiFactory @Inject constructor(){
 
-    private const val BASE_URL = "https://api.rawg.io/api/"
+    fun getInstance(): ApiService {
 
-    private val retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .build()
+        apiService?.let { return it }
 
-    val apiService = retrofit.create(ApiService::class.java)
+        synchronized(LOCK) {
+            apiService?.let { return it }
+
+            val instance = Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
+
+            retrofit = instance
+            apiService = instance.create(ApiService::class.java)
+            return apiService as ApiService
+        }
+    }
+
+    companion object {
+
+        private var retrofit: Retrofit? = null
+
+        private var apiService: ApiService? = null
+
+        private const val BASE_URL = "https://api.rawg.io/api/"
+
+        private val LOCK = Any()
+    }
 }

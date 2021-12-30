@@ -64,7 +64,7 @@ class JsonFragment : Fragment() {
             }
         }
         binding.rvGameInfoList.adapter = adapter
-        viewModel.gameInfoList.observe(viewLifecycleOwner, {
+        viewModel.getGameInfoList().observe(viewLifecycleOwner, {
             adapter.submitList(it)
         })
     }
