@@ -1,6 +1,7 @@
 package com.example.testproject.presentation.viewModel.json
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.testproject.domain.repository.json.useCase.GetGameInfoListUseCase
@@ -8,18 +9,13 @@ import com.example.testproject.domain.repository.json.useCase.GetGameInfoUseCase
 import com.example.testproject.domain.repository.json.useCase.LoadDataUseCase
 import java.lang.RuntimeException
 import javax.inject.Inject
+import javax.inject.Provider
 
 class JsonViewModelFactory @Inject constructor(
-    private val getGameInfoListUseCase: GetGameInfoListUseCase,
-    private val getGameInfoUseCase: GetGameInfoUseCase,
-    private val loadDataUseCase: LoadDataUseCase
-    ): ViewModelProvider.Factory {
+    private val viewModelProvider: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(JsonViewModel::class.java)) {
-            return JsonViewModel(getGameInfoListUseCase, getGameInfoUseCase, loadDataUseCase) as T
-        } else {
-            throw RuntimeException("Wrong view model class $modelClass")
-        }
+            return viewModelProvider[modelClass]?.get() as T
     }
 }
