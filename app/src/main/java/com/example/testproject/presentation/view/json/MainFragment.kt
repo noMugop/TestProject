@@ -10,6 +10,7 @@ import com.example.testproject.databinding.FragmentMainBinding
 import java.lang.RuntimeException
 
 class MainFragment : Fragment() {
+
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
         get() = _binding ?: throw RuntimeException("FragmentMainBinding == null")

@@ -7,10 +7,10 @@ import com.example.testproject.data.network.json.ApiFactory
 import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor(
-    private val application: Application,
     private val gameInfoDatabase: GameInfoDatabase
 ): LocalDataSource {
 
-    override fun getDatabase() = gameInfoDatabase.getInstance(application).gameInfoDao()
-
+    override fun getDatabase(): GameInfoDao {
+        return gameInfoDatabase.gameInfoDao()
+    }
 }

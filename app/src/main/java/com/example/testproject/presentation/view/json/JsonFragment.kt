@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
+import com.example.testproject.MyApp
 import com.example.testproject.data.network.json.ApiFactory
 import com.example.testproject.databinding.FragmentJsonBinding
 import com.example.testproject.data.network.json.model.GameInfoDto
@@ -37,9 +38,18 @@ class JsonFragment : Fragment() {
         ViewModelProvider(this, viewModelFactory)[JsonViewModel::class.java]
     }
 
+    private val component by lazy {
+        (requireContext().applicationContext as MyApp).component
+    }
+
     private var _binding: FragmentJsonBinding? = null
     private val binding: FragmentJsonBinding
         get() = _binding ?: throw RuntimeException("FragmentJsonBinding == null")
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        component.inject(this)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
