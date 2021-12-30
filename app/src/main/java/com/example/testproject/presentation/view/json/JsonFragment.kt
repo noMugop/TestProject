@@ -25,13 +25,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.lang.RuntimeException
+import javax.inject.Inject
 import kotlin.concurrent.thread
 
 class JsonFragment : Fragment() {
 
-    private val viewModelFactory by lazy {
-        JsonViewModelFactory(requireActivity().application)
-    }
+    @Inject
+    lateinit var viewModelFactory: JsonViewModelFactory
 
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[JsonViewModel::class.java]

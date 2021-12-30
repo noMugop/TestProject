@@ -7,8 +7,9 @@ import com.example.testproject.domain.repository.json.useCase.GetGameInfoListUse
 import com.example.testproject.domain.repository.json.useCase.GetGameInfoUseCase
 import com.example.testproject.domain.repository.json.useCase.LoadDataUseCase
 import java.lang.RuntimeException
+import javax.inject.Inject
 
-class JsonViewModelFactory(
+class JsonViewModelFactory @Inject constructor(
     private val getGameInfoListUseCase: GetGameInfoListUseCase,
     private val getGameInfoUseCase: GetGameInfoUseCase,
     private val loadDataUseCase: LoadDataUseCase
