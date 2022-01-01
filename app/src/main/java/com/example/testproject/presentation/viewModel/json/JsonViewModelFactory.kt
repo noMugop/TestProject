@@ -12,7 +12,6 @@ import java.lang.RuntimeException
 import javax.inject.Inject
 import javax.inject.Provider
 
-@ApplicationScope
 class JsonViewModelFactory @Inject constructor(
     private val viewModelProvider: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {

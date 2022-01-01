@@ -12,7 +12,7 @@ import dagger.Component
 @Component(modules = [DataModule::class, DomainModule::class, ViewModelModule::class])
 interface ApplicationComponent {
 
-    fun inject(jsonFragment: JsonFragment)
+    fun jsonFragmentComponentFactory(): JsonFragmentComponent.Factory
 
     @Component.Factory
     interface ApplicationComponentFactory {

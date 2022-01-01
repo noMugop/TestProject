@@ -47,6 +47,8 @@ class JsonFragment : Fragment() {
 
     private val component by lazy {
         (requireContext().applicationContext as MyApp).component
+            .jsonFragmentComponentFactory()
+            .create()
     }
 
     private var _binding: FragmentJsonBinding? = null
