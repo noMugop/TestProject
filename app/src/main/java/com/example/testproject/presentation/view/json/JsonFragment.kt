@@ -139,6 +139,11 @@ class JsonFragment : Fragment() {
             })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
     private fun hideKeyboard(activity: Activity) {
@@ -148,11 +153,6 @@ class JsonFragment : Fragment() {
             activity.currentFocus?.windowToken,
             InputMethodManager.HIDE_NOT_ALWAYS
         )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

@@ -21,28 +21,14 @@ class JsonViewModel @Inject constructor(
     private val deleteDataUseCase: DeleteDataUseCase
 ) : ViewModel() {
 
-    private lateinit var gameInfoLDList: LiveData<List<GameInfo>>
-    private lateinit var gameInfo: GameInfo
+    fun getGameInfoList() = getGameInfoListUseCase()
 
-    fun getGameInfoList(): LiveData<List<GameInfo>> {
-        viewModelScope.launch {
-            gameInfoLDList = getGameInfoListUseCase()
-        }
-        return gameInfoLDList
-    }
-
-    fun getGameInfo(name: String): GameInfo {
-        viewModelScope.launch {
-            gameInfo = getGameInfoUseCase(name)
-        }
-        return gameInfo
-    }
+    fun getGameInfo(name: String) = getGameInfoUseCase(name)
 
     fun loadData(page: Int) {
         viewModelScope.launch {
             loadDataUseCase(page)
         }
-
     }
 
     fun deleteData() {

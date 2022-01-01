@@ -12,7 +12,7 @@ interface GameInfoDao {
     fun getGameInfoList(): LiveData<List<GameInfoDbModel>>
 
     @Query("SELECT * FROM game_info WHERE name == :name")
-    suspend fun getGameInfo(name: String): GameInfoDbModel
+    fun getGameInfo(name: String): LiveData<GameInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun loadData(list: List<GameInfoDbModel>)

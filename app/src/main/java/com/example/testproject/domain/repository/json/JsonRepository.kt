@@ -5,9 +5,9 @@ import com.example.testproject.domain.repository.json.pojo.GameInfo
 
 interface JsonRepository {
 
-    suspend fun getGameInfo(name: String): GameInfo
+    fun getGameInfo(name: String): LiveData<GameInfo>
 
-    suspend fun getGameInfoList(): LiveData<List<GameInfo>>
+    fun getGameInfoList(): LiveData<List<GameInfo>>
 
     suspend fun loadData(page: Int)
 

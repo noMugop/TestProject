@@ -16,12 +16,13 @@ class JsonRepositoryImpl @Inject constructor(
     private val mapper: GameInfoMapper
 ) : JsonRepository {
 
-    override suspend fun getGameInfo(name: String): GameInfo {
-        val gameDbModel = localDataSource.getDatabase().getGameInfo(name)
-        return mapper.mapDbModelToGameInfo(gameDbModel)
+    override fun getGameInfo(name: String): LiveData<GameInfo> {
+        return Transformations.map(localDataSource.getDatabase().getGameInfo(name)) {
+            mapper.mapDbModelToGameInfo(it)
+        }
     }
 
-    override suspend fun getGameInfoList(): LiveData<List<GameInfo>> {
+    override fun getGameInfoList(): LiveData<List<GameInfo>> {
         return Transformations.map(localDataSource.getDatabase().getGameInfoList()) {
             it.map { mapper.mapDbModelToGameInfo(it) }
         }
