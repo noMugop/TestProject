@@ -8,13 +8,13 @@ import javax.inject.Inject
 class GameInfoMapper @Inject constructor(){
 
     fun mapDtoToDbModel(gameInfoDtoList: GameInfoDto) = GameInfoDbModel(
-        id = gameInfoDtoList.id,
         name = gameInfoDtoList.name,
+        backgroundImage = gameInfoDtoList.backgroundImage,
         shortScreenshot = gameInfoDtoList.shortScreenshot)
 
     fun mapDbModelToGameInfo(gameInfoDbModel: GameInfoDbModel) = GameInfo(
-        id = gameInfoDbModel.id,
         name = gameInfoDbModel.name,
+        backgroundImage = gameInfoDbModel.backgroundImage,
         shortScreenshot = gameInfoDbModel.shortScreenshot)
 
 }

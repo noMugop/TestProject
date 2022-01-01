@@ -5,5 +5,5 @@ import javax.inject.Inject
 
 class GetGameInfoListUseCase @Inject constructor(private val repository: JsonRepository) {
 
-    operator fun invoke() = repository.getGameInfoList()
+    suspend operator fun invoke() = repository.getGameInfoList()
 }

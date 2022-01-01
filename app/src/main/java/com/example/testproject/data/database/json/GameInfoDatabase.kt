@@ -10,7 +10,7 @@ import com.example.testproject.data.database.json.model.GameInfoDbModel
 import com.example.testproject.data.database.json.model.converter.Converters
 import javax.inject.Inject
 
-@Database(entities = [GameInfoDbModel::class], version = 3, exportSchema = false)
+@Database(entities = [GameInfoDbModel::class], version = 5, exportSchema = false)
 abstract class GameInfoDatabase: RoomDatabase() {
 
     companion object {

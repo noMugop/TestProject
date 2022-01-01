@@ -10,7 +10,7 @@ interface ApiService {
     suspend fun getGames(
         @Query("key") apiKey: String = "a4e26c0bf94c4e60958070c3e570cd94",
         @Query("page") page: Int = 2,
-        @Query("page_size") page_size: Int = 10,
+        @Query("page_size") page_size: Int = 6,
         @Query("platforms") platforms: Int = 4
     ): GameInfoListDto
 }

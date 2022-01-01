@@ -7,10 +7,10 @@ import com.example.testproject.domain.repository.json.pojo.ShortScreenshot
 @Entity(tableName = "game_info")
 @TypeConverters(Converters::class)
 data class GameInfoDbModel(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
-
+    @PrimaryKey(autoGenerate = false)
     val name: String,
+
+    val backgroundImage: String,
 
     val shortScreenshot: List<ShortScreenshot>? = null
 )

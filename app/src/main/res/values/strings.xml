@@ -5,4 +5,7 @@
     <string name="json">Работа с JSON</string>
     <string name="notepad">Блокнот</string>
     <string name="game_name">Название игры</string>
+    <string name="previous">назад</string>
+    <string name="next">вперед</string>
+    <string name="pageNumber">1</string>
 </resources>

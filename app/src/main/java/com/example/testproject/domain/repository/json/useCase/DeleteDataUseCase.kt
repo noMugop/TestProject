@@ -3,10 +3,10 @@ package com.example.testproject.domain.repository.json.useCase
 import com.example.testproject.domain.repository.json.JsonRepository
 import javax.inject.Inject
 
-class LoadDataUseCase @Inject constructor(private val repository: JsonRepository) {
+class DeleteDataUseCase @Inject constructor(private val repository: JsonRepository) {
 
-    suspend operator fun invoke(page: Int) {
+    suspend operator fun invoke() {
 
-        repository.loadData(page)
+        repository.deleteData()
     }
 }

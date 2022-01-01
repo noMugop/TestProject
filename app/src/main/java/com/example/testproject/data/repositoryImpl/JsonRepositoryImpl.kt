@@ -1,21 +1,13 @@
 package com.example.testproject.data.repositoryImpl
 
-import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.testproject.data.database.json.GameInfoDatabase
 import com.example.testproject.data.database.json.model.GameInfoDbModel
 import com.example.testproject.data.datasource.LocalDataSource
 import com.example.testproject.data.datasource.RemoteDataSource
 import com.example.testproject.data.mapper.GameInfoMapper
-import com.example.testproject.data.network.json.ApiFactory
-import com.example.testproject.data.network.json.ApiService
 import com.example.testproject.domain.repository.json.JsonRepository
 import com.example.testproject.domain.repository.json.pojo.GameInfo
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class JsonRepositoryImpl @Inject constructor(
@@ -24,32 +16,27 @@ class JsonRepositoryImpl @Inject constructor(
     private val mapper: GameInfoMapper
 ) : JsonRepository {
 
-    private val scope = CoroutineScope(Dispatchers.Main)
-
-    override fun getGameInfo(id: Int): GameInfo {
-        var game: GameInfo? = null
-        scope.launch {
-            val gameDbModel = localDataSource.getDatabase().getGameInfo(id)
-            game = mapper.mapDbModelToGameInfo(gameDbModel)
-        }
-            return game as GameInfo
+    override suspend fun getGameInfo(name: String): GameInfo {
+        val gameDbModel = localDataSource.getDatabase().getGameInfo(name)
+        return mapper.mapDbModelToGameInfo(gameDbModel)
     }
 
-    override fun getGameInfoList(): LiveData<List<GameInfo>> {
+    override suspend fun getGameInfoList(): LiveData<List<GameInfo>> {
         return Transformations.map(localDataSource.getDatabase().getGameInfoList()) {
             it.map { mapper.mapDbModelToGameInfo(it) }
         }
     }
 
-    override fun loadData() {
-        scope.launch {
-            var listGameInfoDbModel = listOf<GameInfoDbModel>()
-            val gameInfo = remoteDataSource.getApiService().getGames()
-            val listGameInfoDto = gameInfo.results
-            if (listGameInfoDto != null) {
-                listGameInfoDbModel = listGameInfoDto.map { mapper.mapDtoToDbModel(it) }
-            }
+    override suspend fun loadData(page: Int) {
+        val gameInfo = remoteDataSource.getApiService().getGames(page = page)
+        val listGameInfoDto = gameInfo.results
+        if (listGameInfoDto != null) {
+            val listGameInfoDbModel = listGameInfoDto.map { mapper.mapDtoToDbModel(it) }
             localDataSource.getDatabase().loadData(listGameInfoDbModel)
         }
+    }
+
+    override suspend fun deleteData() {
+        localDataSource.getDatabase().deleteData()
     }
 }
