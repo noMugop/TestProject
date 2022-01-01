@@ -7,6 +7,7 @@ import com.example.testproject.presentation.view.json.JsonFragment
 import com.example.testproject.presentation.view.json.MainActivity
 import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Named
 
 @ApplicationScope
 @Component(modules = [DataModule::class, DomainModule::class, ViewModelModule::class])
@@ -18,8 +19,8 @@ interface ApplicationComponent {
     interface ApplicationComponentFactory {
 
         fun create(
-            @BindsInstance application: Application,
-            @BindsInstance gameInfoDatabase: GameInfoDatabase
+            @BindsInstance @Named("application") application: Application,
+            @BindsInstance @Named("gameInfoDatabase") gameInfoDatabase: GameInfoDatabase
         ): ApplicationComponent
     }
 }
