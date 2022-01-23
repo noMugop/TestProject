@@ -28,7 +28,7 @@ class JsonFragment : Fragment() {
     lateinit var viewModelFactory: JsonViewModelFactory
 
     private val component by lazy {
-        (requireContext().applicationContext as MyApp).component
+        (requireActivity().application as MyApp).component
     }
 
     override fun onAttach(context: Context) {
