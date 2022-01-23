@@ -5,6 +5,6 @@
     android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.example.testproject.presentation.view.MainFragment"
+    android:name="com.example.testproject.presentation.view.JsonFragment"
     tools:context=".presentation.view.MainActivity"
 />

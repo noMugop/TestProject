@@ -22,27 +22,23 @@ import javax.inject.Inject
 
 class JsonFragment : Fragment() {
 
+    private lateinit var viewModel: JsonViewModel
+
     @Inject
     lateinit var viewModelFactory: JsonViewModelFactory
 
-    private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[JsonViewModel::class.java]
-    }
-
     private val component by lazy {
         (requireContext().applicationContext as MyApp).component
-            .jsonFragmentComponentFactory()
-            .create()
+    }
+
+    override fun onAttach(context: Context) {
+        component.injectJsonFragment(this)
+        super.onAttach(context)
     }
 
     private var _binding: FragmentJsonBinding? = null
     private val binding: FragmentJsonBinding
         get() = _binding ?: throw RuntimeException("FragmentJsonBinding == null")
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        component.inject(this)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +50,7 @@ class JsonFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this, viewModelFactory)[JsonViewModel::class.java]
         val adapter = GameInfoAdapter(requireContext())
         adapter.onGameClickListener = object : GameInfoAdapter.OnGameClickListener {
             override fun onGameClick(gameInfo: GameInfo) {
