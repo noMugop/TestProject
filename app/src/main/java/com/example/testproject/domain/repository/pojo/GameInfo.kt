@@ -1,4 +1,4 @@
-package com.example.testproject.domain.repository.json.pojo
+package com.example.testproject.domain.repository.pojo
 
 data class GameInfo(
     val name: String,

@@ -2,12 +2,11 @@ package com.example.testproject.data.repositoryImpl
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.testproject.data.database.json.model.GameInfoDbModel
 import com.example.testproject.data.datasource.LocalDataSource
 import com.example.testproject.data.datasource.RemoteDataSource
 import com.example.testproject.data.mapper.GameInfoMapper
-import com.example.testproject.domain.repository.json.JsonRepository
-import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.JsonRepository
+import com.example.testproject.domain.repository.pojo.GameInfo
 import javax.inject.Inject
 
 class JsonRepositoryImpl @Inject constructor(

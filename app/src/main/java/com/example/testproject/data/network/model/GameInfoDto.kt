@@ -1,6 +1,6 @@
-package com.example.testproject.data.network.json.model
+package com.example.testproject.data.network.model
 
-import com.example.testproject.domain.repository.json.pojo.ShortScreenshot
+import com.example.testproject.domain.repository.pojo.ShortScreenshot
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName

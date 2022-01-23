@@ -1,7 +1,7 @@
-package com.example.testproject.domain.repository.json
+package com.example.testproject.domain
 
 import androidx.lifecycle.LiveData
-import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.repository.pojo.GameInfo
 
 interface JsonRepository {
 

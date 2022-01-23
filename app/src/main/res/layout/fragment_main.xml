@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".presentation.view.json.MainFragment">
+    tools:context=".presentation.view.MainFragment">
 
     <Button
         android:id="@+id/json_button"

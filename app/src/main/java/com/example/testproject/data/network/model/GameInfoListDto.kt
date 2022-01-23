@@ -1,4 +1,4 @@
-package com.example.testproject.data.network.json.model
+package com.example.testproject.data.network.model
 
 import com.google.gson.annotations.Expose
 

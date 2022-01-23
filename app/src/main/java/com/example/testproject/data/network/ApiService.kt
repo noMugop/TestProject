@@ -1,6 +1,6 @@
-package com.example.testproject.data.network.json
+package com.example.testproject.data.network
 
-import com.example.testproject.data.network.json.model.GameInfoListDto
+import com.example.testproject.data.network.model.GameInfoListDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

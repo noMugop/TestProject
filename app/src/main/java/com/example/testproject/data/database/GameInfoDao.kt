@@ -1,9 +1,9 @@
-package com.example.testproject.data.database.json
+package com.example.testproject.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.testproject.data.database.json.model.GameInfoDbModel
-import com.example.testproject.data.database.json.model.converter.Converters
+import com.example.testproject.data.database.model.GameInfoDbModel
+import com.example.testproject.data.database.model.converter.Converters
 
 @Dao
 interface GameInfoDao {

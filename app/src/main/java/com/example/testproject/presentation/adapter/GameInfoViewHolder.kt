@@ -1,4 +1,4 @@
-package com.example.testproject.presentation.adapter.json
+package com.example.testproject.presentation.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testproject.databinding.ItemGameInfoBinding

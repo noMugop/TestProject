@@ -1,6 +1,6 @@
 package com.example.testproject.di
 
-import com.example.testproject.presentation.view.json.JsonFragment
+import com.example.testproject.presentation.view.JsonFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [ViewModelModule::class])

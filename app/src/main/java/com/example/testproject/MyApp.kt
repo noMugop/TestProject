@@ -1,11 +1,8 @@
 package com.example.testproject
 
 import android.app.Application
-import com.example.testproject.data.database.json.GameInfoDatabase
-import com.example.testproject.di.ApplicationComponent
+import com.example.testproject.data.database.GameInfoDatabase
 import com.example.testproject.di.DaggerApplicationComponent
-import com.example.testproject.di.DataModule
-import dagger.Component
 
 class MyApp: Application() {
 

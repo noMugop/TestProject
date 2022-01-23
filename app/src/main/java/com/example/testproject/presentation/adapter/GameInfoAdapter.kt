@@ -1,11 +1,10 @@
-package com.example.testproject.presentation.adapter.json
+package com.example.testproject.presentation.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.example.testproject.databinding.ItemGameInfoBinding
-import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.repository.pojo.GameInfo
 import com.squareup.picasso.Picasso
 
 class GameInfoAdapter(private val context: Context) :

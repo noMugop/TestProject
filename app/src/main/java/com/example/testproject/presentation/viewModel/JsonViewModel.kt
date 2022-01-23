@@ -1,16 +1,11 @@
-package com.example.testproject.presentation.viewModel.json
+package com.example.testproject.presentation.viewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testproject.data.repositoryImpl.JsonRepositoryImpl
-import com.example.testproject.domain.repository.json.pojo.GameInfo
-import com.example.testproject.domain.repository.json.useCase.DeleteDataUseCase
-import com.example.testproject.domain.repository.json.useCase.GetGameInfoListUseCase
-import com.example.testproject.domain.repository.json.useCase.GetGameInfoUseCase
-import com.example.testproject.domain.repository.json.useCase.LoadDataUseCase
+import com.example.testproject.domain.useCase.DeleteDataUseCase
+import com.example.testproject.domain.useCase.GetGameInfoListUseCase
+import com.example.testproject.domain.useCase.GetGameInfoUseCase
+import com.example.testproject.domain.useCase.LoadDataUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

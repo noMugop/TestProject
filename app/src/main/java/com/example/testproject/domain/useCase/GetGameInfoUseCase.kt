@@ -1,6 +1,6 @@
-package com.example.testproject.domain.repository.json.useCase
+package com.example.testproject.domain.useCase
 
-import com.example.testproject.domain.repository.json.JsonRepository
+import com.example.testproject.domain.JsonRepository
 import javax.inject.Inject
 
 class GetGameInfoUseCase @Inject constructor(private val repository: JsonRepository) {

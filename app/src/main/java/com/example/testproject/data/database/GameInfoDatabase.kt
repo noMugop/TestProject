@@ -1,14 +1,10 @@
-package com.example.testproject.data.database.json
+package com.example.testproject.data.database
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.testproject.data.database.json.model.GameInfoDbModel
-import com.example.testproject.data.database.json.model.converter.Converters
-import javax.inject.Inject
+import com.example.testproject.data.database.model.GameInfoDbModel
 
 @Database(entities = [GameInfoDbModel::class], version = 5, exportSchema = false)
 abstract class GameInfoDatabase: RoomDatabase() {

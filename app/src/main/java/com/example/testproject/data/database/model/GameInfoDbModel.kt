@@ -1,8 +1,8 @@
-package com.example.testproject.data.database.json.model
+package com.example.testproject.data.database.model
 
 import androidx.room.*
-import com.example.testproject.data.database.json.model.converter.Converters
-import com.example.testproject.domain.repository.json.pojo.ShortScreenshot
+import com.example.testproject.data.database.model.converter.Converters
+import com.example.testproject.domain.repository.pojo.ShortScreenshot
 
 @Entity(tableName = "game_info")
 @TypeConverters(Converters::class)

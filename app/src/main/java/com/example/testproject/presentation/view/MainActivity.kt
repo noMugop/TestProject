@@ -1,4 +1,4 @@
-package com.example.testproject.presentation.view.json
+package com.example.testproject.presentation.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

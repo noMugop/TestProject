@@ -1,7 +1,7 @@
-package com.example.testproject.data.database.json.model.converter
+package com.example.testproject.data.database.model.converter
 
 import androidx.room.TypeConverter
-import com.example.testproject.domain.repository.json.pojo.ShortScreenshot
+import com.example.testproject.domain.repository.pojo.ShortScreenshot
 
 import com.google.gson.Gson
 

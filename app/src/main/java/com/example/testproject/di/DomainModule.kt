@@ -1,7 +1,7 @@
 package com.example.testproject.di
 
 import com.example.testproject.data.repositoryImpl.JsonRepositoryImpl
-import com.example.testproject.domain.repository.json.JsonRepository
+import com.example.testproject.domain.JsonRepository
 import dagger.Binds
 import dagger.Module
 

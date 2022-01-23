@@ -1,4 +1,4 @@
-package com.example.testproject.presentation.view.json
+package com.example.testproject.presentation.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

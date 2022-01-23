@@ -1,7 +1,7 @@
 package com.example.testproject.di
 
 import androidx.lifecycle.ViewModel
-import com.example.testproject.presentation.viewModel.json.JsonViewModel
+import com.example.testproject.presentation.viewModel.JsonViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

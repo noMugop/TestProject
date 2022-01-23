@@ -1,9 +1,7 @@
 package com.example.testproject.data.datasource
 
-import android.app.Application
-import com.example.testproject.data.database.json.GameInfoDao
-import com.example.testproject.data.database.json.GameInfoDatabase
-import com.example.testproject.data.network.json.ApiFactory
+import com.example.testproject.data.database.GameInfoDao
+import com.example.testproject.data.database.GameInfoDatabase
 import javax.inject.Inject
 import javax.inject.Named
 

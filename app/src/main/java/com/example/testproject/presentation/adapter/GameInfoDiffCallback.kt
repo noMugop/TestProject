@@ -1,8 +1,8 @@
-package com.example.testproject.presentation.adapter.json
+package com.example.testproject.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.testproject.data.network.json.model.GameInfoDto
-import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.data.network.model.GameInfoDto
+import com.example.testproject.domain.repository.pojo.GameInfo
 
 object GameInfoDiffCallback: DiffUtil.ItemCallback<GameInfo>() {
 
