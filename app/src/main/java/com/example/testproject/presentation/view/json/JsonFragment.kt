@@ -47,12 +47,14 @@ class JsonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = MoviesAdapter()
-        binding.rvMovies.adapter = adapter
-        viewModel.gameInfoLDList.observe(viewLifecycleOwner
-        ) {
+
+        viewModel.moviesLit.observe(viewLifecycleOwner,
+        {
             adapter.submitList(it)
             println("DONE $it")
-        }
+        })
+
+        binding.rvMovies.adapter = adapter
     }
 
     override fun onDestroyView() {

@@ -14,7 +14,7 @@ class JsonViewModel @Inject constructor(
     private val loadDataUseCase: LoadDataUseCase
 ) : ViewModel() {
 
-    val gameInfoLDList = getGameInfoListUseCase()
+    val moviesLit = getGameInfoListUseCase()
 
     fun loadData(page: Int) {
         viewModelScope.launch {
