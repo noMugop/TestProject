@@ -28,6 +28,6 @@ class MoviesAdapter : ListAdapter<Movie, MovieInfoViewHolder>(MoviesDiffCallback
 
     companion object {
 
-        val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+        private const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     }
 }
