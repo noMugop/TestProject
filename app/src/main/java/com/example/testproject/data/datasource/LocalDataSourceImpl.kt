@@ -1,16 +1,14 @@
 package com.example.testproject.data.datasource
 
-import android.app.Application
-import com.example.testproject.data.database.json.GameInfoDao
-import com.example.testproject.data.database.json.GameInfoDatabase
-import com.example.testproject.data.network.json.ApiFactory
+import com.example.testproject.data.database.json.MoviesDao
+import com.example.testproject.data.database.json.MoviesDatabase
 import javax.inject.Inject
 
 class LocalDataSourceImpl @Inject constructor(
-    private val gameInfoDatabase: GameInfoDatabase
+    private val moviesDatabase: MoviesDatabase
 ): LocalDataSource {
 
-    override fun getDatabase(): GameInfoDao {
-        return gameInfoDatabase.gameInfoDao()
+    override fun getDatabase(): MoviesDao {
+        return moviesDatabase.gameInfoDao()
     }
 }

@@ -1,9 +1,8 @@
 package com.example.testproject.data.datasource
 
-import com.example.testproject.data.database.json.GameInfoDao
-import com.example.testproject.data.database.json.GameInfoDatabase
+import com.example.testproject.data.database.json.MoviesDao
 
 interface LocalDataSource {
 
-    fun getDatabase(): GameInfoDao
+    fun getDatabase(): MoviesDao
 }

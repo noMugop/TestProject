@@ -1,8 +1,6 @@
 package com.example.testproject.presentation.adapter.json
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.testproject.data.network.json.model.GameInfoDto
-import com.example.testproject.domain.repository.json.pojo.GameInfo
 import com.example.testproject.domain.repository.json.pojo.Movie
 
 object MoviesDiffCallback: DiffUtil.ItemCallback<Movie>() {
