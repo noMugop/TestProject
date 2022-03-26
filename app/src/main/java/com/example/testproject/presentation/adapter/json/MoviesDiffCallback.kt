@@ -5,7 +5,7 @@ import com.example.testproject.data.network.json.model.GameInfoDto
 import com.example.testproject.domain.repository.json.pojo.GameInfo
 import com.example.testproject.domain.repository.json.pojo.Movie
 
-object GameInfoDiffCallback: DiffUtil.ItemCallback<Movie>() {
+object MoviesDiffCallback: DiffUtil.ItemCallback<Movie>() {
 
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
