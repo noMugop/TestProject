@@ -2,19 +2,19 @@ package com.example.testproject.presentation.viewModel.json
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testproject.domain.repository.json.useCase.GetGameInfoListUseCase
-import com.example.testproject.domain.repository.json.useCase.GetGameInfoUseCase
+import com.example.testproject.domain.repository.json.useCase.GetMoviesListUseCase
+import com.example.testproject.domain.repository.json.useCase.GetMoviesUseCase
 import com.example.testproject.domain.repository.json.useCase.LoadDataUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class JsonViewModel @Inject constructor(
-    private val getGameInfoListUseCase: GetGameInfoListUseCase,
-    private val getGameInfoUseCase: GetGameInfoUseCase,
+    private val getMoviesListUseCase: GetMoviesListUseCase,
+    private val getMoviesUseCase: GetMoviesUseCase,
     private val loadDataUseCase: LoadDataUseCase
 ) : ViewModel() {
 
-    val moviesLit = getGameInfoListUseCase()
+    val moviesLit = getMoviesListUseCase()
 
     fun loadData(page: Int) {
         viewModelScope.launch {
