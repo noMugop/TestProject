@@ -22,7 +22,12 @@ class MoviesAdapter : ListAdapter<Movie, MovieInfoViewHolder>(MoviesDiffCallback
         val movie = getItem(position)
         with(holder.binding) {
             tvMovieName.text = movie.title
-            Picasso.get().load(movie.posterPath).into(ivMovieImage)
+            Picasso.get().load(IMAGE_URL + movie.posterPath).into(ivMovieImage)
         }
+    }
+
+    companion object {
+
+        val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
     }
 }
