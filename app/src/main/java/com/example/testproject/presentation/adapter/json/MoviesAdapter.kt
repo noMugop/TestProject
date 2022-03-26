@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.testproject.databinding.ItemMovieInfoBinding
 import com.example.testproject.domain.repository.json.pojo.Movie
+import com.squareup.picasso.Picasso
 
 class MoviesAdapter : ListAdapter<Movie, MovieInfoViewHolder>(MoviesDiffCallback) {
 
@@ -18,10 +19,10 @@ class MoviesAdapter : ListAdapter<Movie, MovieInfoViewHolder>(MoviesDiffCallback
     }
 
     override fun onBindViewHolder(holder: MovieInfoViewHolder, position: Int) {
-        val game = getItem(position)
+        val movie = getItem(position)
         with(holder.binding) {
-            tvMovieName.text = game.title
-            //Picasso.get().load(game.posterPath).into(ivMovieImage)
+            tvMovieName.text = movie.title
+            Picasso.get().load(movie.posterPath).into(ivMovieImage)
         }
     }
 }
