@@ -9,4 +9,5 @@
     <string name="next">вперед</string>
     <string name="pageNumber">1</string>
     <string name="find">Найти</string>
+    <string name="poster_of_movie">poster_of_movie</string>
 </resources>

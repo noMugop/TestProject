@@ -48,11 +48,10 @@ class JsonFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = MoviesAdapter()
 
-        viewModel.moviesLit.observe(viewLifecycleOwner,
-        {
+        viewModel.moviesLit.observe(viewLifecycleOwner
+        ) {
             adapter.submitList(it)
-            println("DONE $it")
-        })
+        }
 
         binding.rvMovies.adapter = adapter
     }
