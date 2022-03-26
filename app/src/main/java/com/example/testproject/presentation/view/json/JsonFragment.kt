@@ -71,83 +71,12 @@ class JsonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = GameInfoAdapter(requireContext())
-        adapter.onGameClickListener = object : GameInfoAdapter.OnGameClickListener {
-            override fun onGameClick(gameInfo: GameInfo) {
-                Toast.makeText(context, gameInfo.name, Toast.LENGTH_SHORT).show()
-                hideKeyboard(requireActivity())
-            }
+        binding.rvMovies.adapter = adapter
+        viewModel.gameInfoLDList.observe(viewLifecycleOwner
+        ) {
+            adapter.submitList(it)
+            println("DONE $it")
         }
-        adapter.onNameLongClickListener = object : GameInfoAdapter.OnNameLongClickListener {
-            override fun onNameLongClick() {
-                Toast.makeText(context, "Copy text to clipboard using popup", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-        binding.rvGameInfoList.adapter = adapter
-        binding.buttonNext.setOnClickListener {
-            if (PAGE >= PAGE_N) {
-                viewModel.deleteData()
-                viewModel.loadData(++PAGE)
-                binding.pageNumber.text = PAGE.toString().toEditable()
-            }
-        }
-        binding.buttonPrev.setOnClickListener {
-            if (PAGE >= PAGE_P) {
-                viewModel.deleteData()
-                viewModel.loadData(--PAGE)
-                binding.pageNumber.text = PAGE.toString().toEditable()
-            }
-        }
-        binding.pageNumber.addTextChangedListener(object : TextWatcher {
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                val key = p0
-
-                if (key != null && key.toString() != EMPTY_STRING) {
-                    binding.pageNumber.setOnKeyListener { view, i, keyEvent ->
-                        if (i == KeyEvent.KEYCODE_ENTER && keyEvent.action == KeyEvent.ACTION_UP
-                            && key.toString() != EMPTY_STRING
-                            && key.toString().toInt() >= MIN_PAGE
-                        ) {
-                            PAGE = key.toString().toInt()
-                            viewModel.deleteData()
-                            viewModel.loadData(PAGE)
-                            binding.pageNumber.clearFocus()
-                            hideKeyboard(requireActivity())
-                            return@setOnKeyListener true
-                        } else {
-                            false
-                        }
-                    }
-                } else if (key == null
-                    || key.toString() == EMPTY_STRING
-                ) {
-                    Toast.makeText(context, "Enter page", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-
-        viewModel.getGameInfoList().observe(viewLifecycleOwner,
-            {
-                adapter.submitList(it)
-            })
-    }
-
-    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
-
-    private fun hideKeyboard(activity: Activity) {
-        val inputMethodManager =
-            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(
-            activity.currentFocus?.windowToken,
-            InputMethodManager.HIDE_NOT_ALWAYS
-        )
     }
 
     override fun onDestroyView() {
@@ -156,11 +85,6 @@ class JsonFragment : Fragment() {
     }
 
     companion object {
-
-        private val EMPTY_STRING = ""
-        private val MIN_PAGE = 1
-        private val PAGE_N = 0
-        private val PAGE_P = 2
 
         fun newInstance() = JsonFragment()
     }

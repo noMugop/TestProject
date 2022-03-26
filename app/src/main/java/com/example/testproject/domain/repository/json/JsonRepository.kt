@@ -2,14 +2,13 @@ package com.example.testproject.domain.repository.json
 
 import androidx.lifecycle.LiveData
 import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.repository.json.pojo.Movie
 
 interface JsonRepository {
 
-    suspend fun getGameInfo(name: String): GameInfo
+    fun getGameInfo(id: Int): LiveData<Movie>
 
-    suspend fun getGameInfoList(): LiveData<List<GameInfo>>
+    fun getGameInfoList(): LiveData<List<Movie>>
 
     suspend fun loadData(page: Int)
-
-    suspend fun deleteData()
 }

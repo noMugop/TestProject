@@ -8,6 +8,7 @@ import com.example.testproject.data.datasource.RemoteDataSource
 import com.example.testproject.data.mapper.GameInfoMapper
 import com.example.testproject.domain.repository.json.JsonRepository
 import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.repository.json.pojo.Movie
 import javax.inject.Inject
 
 class JsonRepositoryImpl @Inject constructor(
@@ -16,27 +17,25 @@ class JsonRepositoryImpl @Inject constructor(
     private val mapper: GameInfoMapper
 ) : JsonRepository {
 
-    override suspend fun getGameInfo(name: String): GameInfo {
-        val gameDbModel = localDataSource.getDatabase().getGameInfo(name)
-        return mapper.mapDbModelToGameInfo(gameDbModel)
+    override fun getGameInfo(id: Int): LiveData<Movie> {
+        return Transformations.map(localDataSource.getDatabase().getGameInfo(id)) {
+            mapper.mapDbModelToMovie(it)
+        }
+
     }
 
-    override suspend fun getGameInfoList(): LiveData<List<GameInfo>> {
+    override fun getGameInfoList(): LiveData<List<Movie>> {
         return Transformations.map(localDataSource.getDatabase().getGameInfoList()) {
-            it.map { mapper.mapDbModelToGameInfo(it) }
+            it.map { mapper.mapDbModelToMovie(it) }
         }
     }
 
     override suspend fun loadData(page: Int) {
-        val gameInfo = remoteDataSource.getApiService().getGames(page = page)
+        val gameInfo = remoteDataSource.getApiService().getMovies(page = page)
         val listGameInfoDto = gameInfo.results
         if (listGameInfoDto != null) {
-            val listGameInfoDbModel = listGameInfoDto.map { mapper.mapDtoToDbModel(it) }
+            val listGameInfoDbModel = listGameInfoDto.map { mapper.mapDtoToDbModelMovie(it) }
             localDataSource.getDatabase().loadData(listGameInfoDbModel)
         }
-    }
-
-    override suspend fun deleteData() {
-        localDataSource.getDatabase().deleteData()
     }
 }

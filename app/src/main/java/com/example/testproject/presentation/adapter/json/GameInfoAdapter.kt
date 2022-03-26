@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.testproject.databinding.ItemGameInfoBinding
+import com.example.testproject.databinding.ItemMovieInfoBinding
 import com.example.testproject.domain.repository.json.pojo.GameInfo
+import com.example.testproject.domain.repository.json.pojo.Movie
 import com.squareup.picasso.Picasso
 
 class GameInfoAdapter(private val context: Context) :
-    androidx.recyclerview.widget.ListAdapter<GameInfo, GameInfoViewHolder>(GameInfoDiffCallback) {
+    androidx.recyclerview.widget.ListAdapter<Movie, GameInfoViewHolder>(GameInfoDiffCallback) {
 
-    var onGameClickListener: OnGameClickListener? = null
-    var onNameLongClickListener: OnNameLongClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameInfoViewHolder {
         return GameInfoViewHolder(
-            ItemGameInfoBinding.inflate(
+            ItemMovieInfoBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -25,24 +25,8 @@ class GameInfoAdapter(private val context: Context) :
     override fun onBindViewHolder(holder: GameInfoViewHolder, position: Int) {
         val game = getItem(position)
         with(holder.binding) {
-            tvGameName.text = game.name
-            Picasso.get().load(game.backgroundImage).into(ivGameImage)
-
-            root.setOnClickListener {
-                onGameClickListener?.onGameClick(game)
-            }
-            tvGameName.setOnLongClickListener {
-                onNameLongClickListener?.onNameLongClick()
-                true
-            }
+            tvMovieName.text = game.title
+            //Picasso.get().load(game.posterPath).into(ivMovieImage)
         }
-    }
-
-    interface OnGameClickListener {
-        fun onGameClick(gameInfo: GameInfo)
-    }
-
-    interface OnNameLongClickListener {
-        fun onNameLongClick()
     }
 }

@@ -7,17 +7,18 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.testproject.data.database.json.model.GameInfoDbModel
+import com.example.testproject.data.database.json.model.MovieDbModel
 import com.example.testproject.data.database.json.model.converter.Converters
 import javax.inject.Inject
 
-@Database(entities = [GameInfoDbModel::class], version = 5, exportSchema = false)
+@Database(entities = [MovieDbModel::class], version = 1, exportSchema = false)
 abstract class GameInfoDatabase: RoomDatabase() {
 
     companion object {
 
         private var db: GameInfoDatabase? = null
         private val LOCK = Any()
-        private const val DB_NAME = "gameInfo.db"
+        private const val DB_NAME = "movieInfo.db"
 
         fun getInstance(application: Application): GameInfoDatabase {
 

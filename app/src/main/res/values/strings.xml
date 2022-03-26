@@ -8,4 +8,5 @@
     <string name="previous">назад</string>
     <string name="next">вперед</string>
     <string name="pageNumber">1</string>
+    <string name="find">Найти</string>
 </resources>
